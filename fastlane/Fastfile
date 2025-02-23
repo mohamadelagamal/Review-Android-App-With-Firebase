@@ -1,0 +1,71 @@
+default_platform(:android)
+# use fastlane android beta_prod, fastlane android beta_dev to run the lanes below
+# if not running this because cahing in android studio try to restart you pc and run lanes
+#     and every thing will be fine
+platform :android do
+  desc "Distribute Development build to Firebase"
+  lane :beta_dev do
+    UI.message "🔄 Starting the build process for Development APK..."
+
+    gradle(task: "clean")
+    UI.message "🧹 Project cleaned."
+
+    gradle(
+      task: "assemble",
+      flavor: "Development",
+      build_type: "Release"
+    )
+    UI.message "🚀 Building APK for development..."
+
+    apk_path = "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/development/release/app-development-release.apk"
+
+    if File.exist?(apk_path)
+      UI.message "📁 APK found at: #{apk_path}"
+    else
+      UI.error "❌ APK not found at: #{apk_path}"
+      exit(1)
+    end
+
+    firebase_app_distribution(
+      app: "1:607723432297:android:e32f6b219de11e44a5b5f8", # Development App ID
+      release_notes: "New Development build 🚀",
+      testers: "mohamadelgamal2002.9.1@gmail.com",
+      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/serviceAccount.json",
+      firebase_cli_token: "1//09oe8r5LSNWwfCgYIARAAGAkSNwF-L9IrZklGZrEFuN4_s8W83Y19Q7dHI5fPPqtT5lzsTDM7o7JbAOb8sQqUCki-NNRcuxAv6ys",
+      apk_path: apk_path
+    )
+  end
+
+  desc "Distribute Production build to Firebase"
+  lane :beta_prod do
+    UI.message "🔄 Starting the build process for Production APK..."
+
+    gradle(task: "clean")
+    UI.message "🧹 Project cleaned."
+
+    gradle(
+      task: "assemble",
+      flavor: "Production",
+      build_type: "Release"
+    )
+    UI.message "🚀 Building APK for production..."
+
+    apk_path = "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/production/release/app-production-release.apk"
+
+    if File.exist?(apk_path)
+      UI.message "📁 APK found at: #{apk_path}"
+    else
+      UI.error "❌ APK not found at: #{apk_path}"
+      exit(1)
+    end
+
+    firebase_app_distribution(
+      app: "1:607723432297:android:237ca2b672593c9ca5b5f8", # Production App ID
+      release_notes: "New Production build 🚀",
+      testers: "mohamadelgamal2002.9.1@gmail.com",
+      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/serviceAccount.json",
+      firebase_cli_token: "1//09oe8r5LSNWwfCgYIARAAGAkSNwF-L9IrZklGZrEFuN4_s8W83Y19Q7dHI5fPPqtT5lzsTDM7o7JbAOb8sQqUCki-NNRcuxAv6ys",
+      apk_path: apk_path
+    )
+  end
+end

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="noteItem"
+            type="com.firebaseserviceandroidapp.features.add_note_dialog.data.model.NoteItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="8dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{noteItem.title}"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    tools:text="This is a title"
+                    android:textColor="@color/lightItemColor"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:id="@+id/title"
+                    android:fontFamily="casual" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority"
+                    android:textSize="26sp"
+                    android:textColor="@color/lightItemColor"
+                    android:fontFamily="casual" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{noteItem.status}"
+                    android:textSize="26sp"
+                    android:padding="5dp"
+                    android:textColor="@color/blue"
+                    android:ellipsize="end"
+                    tools:text="Completed"
+                    app:statusTextColor="@{noteItem.status}"
+                    android:maxLines="1"
+                    android:id="@+id/category"
+                    android:fontFamily="casual" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{noteItem.description}"
+                android:textSize="26sp"
+                android:textColor="@color/lightItemColor"
+                android:ellipsize="end"
+                tools:text="This is a description"
+                android:maxLines="1"
+                android:id="@+id/description"
+                android:fontFamily="casual" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{noteItem.chooseDate}"
+                android:textSize="24sp"
+                tools:text="2021-07-01"
+                android:gravity="end"
+                android:padding="15dp"
+                android:textColor="@color/lightItemColor"
+                android:id="@+id/date"
+                android:fontFamily="casual" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

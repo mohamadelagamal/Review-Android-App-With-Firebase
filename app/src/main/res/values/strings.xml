@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Elgamal</string>
+    <string name="todo">TODO</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">LOGIN</string>
+    <string name="username">name</string>
+    <string name="register">register</string>
+    <string name="Register">Register</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="name">name</string>
+    <string name="title">title</string>
+    <string name="Title">Title</string>
+    <string name="Name">Name</string>
+    <string name="add_new_note">Add New Note</string>
+    <string name="details">Details</string>
+    <string name="ok">OK</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="priority">Priority:</string>
+
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Arabic</item>
+    </string-array>
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="date_format" translatable="false">%1$d/%2$d/%3$d</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="todo_title_error">Please enter todo title</string>
+    <string name="todo_details_error">Please enter todo details</string>
+    <string name="todo_date_error">Please enter todo date</string>
+    <string name="toDo">To Do</string>
+    <string name="complete">Complete</string>
+    <string name="in_progress">In Progress</string>
+    <string name="update">Update</string>
+    <string name="enter_some_text">Enter some text...</string>
+    <string name="logout">Logout</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+</resources>

@@ -13,7 +13,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.MainActivity">
+        tools:context=".home.MainActivity"
+        android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
+        >
 
         <FrameLayout
             android:id="@+id/frameLayoutHome"
@@ -27,7 +30,7 @@
             android:id="@+id/navigationHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bottom_nav_background"
+            android:background="@color/colorAccent"
             app:elevation="0dp"
             app:itemBackground="@drawable/nav_item_background"
             app:itemIconTint="@color/nav_item_text_color"

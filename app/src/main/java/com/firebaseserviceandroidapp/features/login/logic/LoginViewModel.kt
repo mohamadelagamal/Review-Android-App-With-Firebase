@@ -1,5 +1,6 @@
 package com.firebaseserviceandroidapp.features.login.logic
 
+import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import com.firebaseserviceandroidapp.core.base.activity.BaseViewModel
@@ -8,10 +9,12 @@ import com.firebaseserviceandroidapp.core.utils.NetworkUtil.createPropertyChange
 import com.firebaseserviceandroidapp.features.login.data.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import com.firebaseserviceandroidapp.R
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
+    val application: Application
 ) : BaseViewModel<LoginViewState>() {
 
     var email = ObservableField<String>()
@@ -48,19 +51,19 @@ class LoginViewModel @Inject constructor(
         var isValid = true
 
         if (email.get().isNullOrBlank()) {
-            emailError.set(Constants.ERROR_EMAIL)
+            emailError.set(application.getString(R.string.enter_email))
             isValid = false
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.get()).matches()) {
-            emailError.set(Constants.ERROR_EMAIL_INVALID)
+            emailError.set(application.getString(R.string.email_validation))
             isValid = false
         }
 
         if (password.get().isNullOrBlank()) {
-            passwordError.set(Constants.ERROR_PASSWORD)
+            passwordError.set(application.getString(R.string.enter_password))
             isValid = false
         } else password.get()?.length?.let {
             if (it < 8) {
-                passwordError.set(Constants.ERROR_PASSWORD_LENGTH)
+                passwordError.set(application.getString(R.string.enter_password_length))
                 isValid = false
             }
         }

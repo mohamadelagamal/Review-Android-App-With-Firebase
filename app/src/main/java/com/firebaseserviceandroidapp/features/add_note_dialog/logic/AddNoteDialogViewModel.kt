@@ -112,9 +112,9 @@ class AddNoteDialogViewModel @Inject constructor(
 
     override fun getStatusAdapter(context: Context): ArrayAdapter<String> {
         val statusOptions = arrayOf(
-            application.getString(R.string.toDo),
-            application.getString(R.string.in_progress),
-            application.getString(R.string.complete)
+            context.getString(R.string.toDo),
+            context.getString(R.string.in_progress),
+            context.getString(R.string.complete)
         )
         return ArrayAdapter(context, android.R.layout.simple_spinner_item, statusOptions).apply {
             setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

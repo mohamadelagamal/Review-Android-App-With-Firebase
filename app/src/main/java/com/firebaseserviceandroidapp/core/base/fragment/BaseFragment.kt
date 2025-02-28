@@ -55,7 +55,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseFragmentViewModel<*>>
     private fun showAlertDialog(message: String) {
         MaterialAlertDialogBuilder(requireContext())
             .setMessage(message)
-            .setPositiveButton("Yes") { dialog, _ ->
+            .setPositiveButton(context?.getString(R.string.yes)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -70,7 +70,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseFragmentViewModel<*>>
     }
     private fun showLoadingDialog() {
         progressDialog = ProgressDialog(requireContext())
-        progressDialog?.setMessage("Loading...")
+        progressDialog?.setMessage("${getString(R.string.loading)}...")
         progressDialog?.setCancelable(false)
         progressDialog?.show()
     }

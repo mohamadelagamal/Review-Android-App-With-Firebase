@@ -65,7 +65,7 @@ class ProfileViewModel @Inject constructor(
     fun fetchUserProfile() {
         viewModelScope.launch {
             _profileState.value = ProfileUIState.Loading
-            handleProfileResult(profileRepository.getUserProfile())
+            handleProfileResult(profileRepository.getProfile())
         }
     }
 

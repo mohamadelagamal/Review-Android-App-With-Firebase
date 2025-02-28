@@ -7,7 +7,11 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
 
     <application
         android:name=".core.app.MyApp"
@@ -41,7 +45,11 @@
         </activity>
         <activity
             android:name=".core.layout.ui.screen.MainLayoutActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            >
+
+        </activity>
     </application>
 
 </manifest>

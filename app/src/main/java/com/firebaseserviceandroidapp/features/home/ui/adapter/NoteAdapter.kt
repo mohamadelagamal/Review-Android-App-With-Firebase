@@ -1,5 +1,6 @@
 package com.firebaseserviceandroidapp.features.home.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -28,10 +29,13 @@ class NoteAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_ITEM) {
-            val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            NoteViewHolder(binding)
+            val binding =
+                ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            NoteViewHolder(binding, onDeleteClick)
+
         } else {
-            val binding = ItemLottieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding =
+                ItemLottieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             LottieViewHolder(binding)
         }
     }
@@ -40,18 +44,38 @@ class NoteAdapter(
         when (holder) {
             is NoteViewHolder -> {
                 val item = getItem(position) as NoteListItem.Note
-                holder.bind(item.note, onDeleteClick)
+                holder.bind(item.note)
+                holder.bindingRoot.delete.setOnClickListener {
+                    Log.d("NoteAdapter", "Delete clicked for note: ${item.note.id}")
+                    onDeleteClick(item.note)
+                    onItemClickListener?.onItemClick(position, item.note)
+                }
             }
+
             is LottieViewHolder -> {
                 // No binding necessary; the Lottie layout handles its own animation.
             }
         }
     }
 
-    class NoteViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(noteItem: NoteItem, onDeleteClick: (NoteItem) -> Unit) {
+    var onItemClickListener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClick(pos: Int, noteItem: NoteItem)
+    }
+
+    class NoteViewHolder(
+        private val binding: ItemNoteBinding,
+        private val onDeleteClick: (NoteItem) -> Unit,
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
+        var bindingRoot = binding
+        fun bind(noteItem: NoteItem) {
             binding.noteItem = noteItem
-            binding.delete.setOnClickListener { onDeleteClick(noteItem) }
+            binding.delete.setOnClickListener {
+                Log.d("NoteAdapter", "Delete clicked for note: ${noteItem.id}")
+                onDeleteClick(noteItem)
+            }
             binding.executePendingBindings()
         }
     }

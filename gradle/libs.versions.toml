@@ -32,6 +32,7 @@ lottie = "6.6.2"
 playServicesAuth = "20.0.0"
 gson = "2.10.1"
 googleServices = "4.4.2"
+multidex = "2.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -75,6 +76,8 @@ lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie"
 firebaseStorage = { group = "com.google.firebase", name = "firebase-storage" }
 playServicesAuth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

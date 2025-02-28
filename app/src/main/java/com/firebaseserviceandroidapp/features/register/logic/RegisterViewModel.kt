@@ -1,5 +1,6 @@
 package com.firebaseserviceandroidapp.features.register.logic
 
+import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
@@ -11,9 +12,11 @@ import com.firebaseserviceandroidapp.features.register.data.repository.RegisterR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.firebaseserviceandroidapp.R
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val registerRepository: RegisterRepository) :
+class RegisterViewModel @Inject constructor(private val registerRepository: RegisterRepository,
+   val  application: Application) :
     BaseViewModel<RegisterViewState>() {
 
     var name = ObservableField<String>()
@@ -68,35 +71,35 @@ class RegisterViewModel @Inject constructor(private val registerRepository: Regi
         var isValid = true
 
         if (name.get().isNullOrBlank()) {
-            nameError.set(Constants.ERROR_NAME)
+            nameError.set(application.getString(R.string.enter_name))
             isValid = false
         } else {
             nameError.set(null)
         }
 
         if (title.get().isNullOrBlank()) {
-            titleError.set(Constants.ERROR_TITLE)
+            titleError.set(application.getString(R.string.enter_title))
             isValid = false
         } else {
             titleError.set(null)
         }
 
         if (email.get().isNullOrBlank()) {
-            emailError.set(Constants.ERROR_EMAIL)
+            emailError.set(application.getString(R.string.enter_email))
             isValid = false
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.get()).matches()) {
-            emailError.set(Constants.ERROR_EMAIL_INVALID)
+            emailError.set(application.getString(R.string.email_validation))
             isValid = false
         } else {
             emailError.set(null)
         }
 
         if (password.get().isNullOrBlank()) {
-            passwordError.set(Constants.ERROR_PASSWORD)
+            passwordError.set(application.getString(R.string.enter_password))
             isValid = false
         } else password.get()?.length?.let {
             if (it < 8) {
-                passwordError.set(Constants.ERROR_PASSWORD_LENGTH)
+                passwordError.set(application.getString(R.string.enter_password_length))
                 isValid = false
             } else {
                 passwordError.set(null)

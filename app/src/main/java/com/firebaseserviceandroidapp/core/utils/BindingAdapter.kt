@@ -1,7 +1,9 @@
 package com.firebaseserviceandroidapp.core.utils
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.AdapterView
-import android.widget.SearchView
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -12,10 +14,9 @@ import com.firebaseserviceandroidapp.R
 import com.firebaseserviceandroidapp.features.add_note_dialog.data.model.NoteItem
 import com.firebaseserviceandroidapp.features.home.logic.HomeViewModel
 import com.firebaseserviceandroidapp.features.home.ui.adapter.NoteAdapter
-import com.firebaseserviceandroidapp.features.search.logic.SearchViewModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 
 @BindingAdapter("selectedDateAttrChanged")
@@ -38,11 +39,13 @@ fun setOnDateSelectedListener(view: MaterialCalendarView, viewModel: HomeViewMod
         viewModel.onDateSelected(date)
     })
 }
+
 @BindingAdapter("app:notes")
 fun setNotes(recyclerView: RecyclerView, notes: List<NoteItem>?) {
     val adapter = recyclerView.adapter as? NoteAdapter
     //adapter?.updateData(notes ?: emptyList())
 }
+
 @BindingAdapter("app:selectedDate")
 fun setSelectedDate(view: MaterialCalendarView, date: CalendarDay?) {
     val today = CalendarDay.today()
@@ -50,30 +53,38 @@ fun setSelectedDate(view: MaterialCalendarView, date: CalendarDay?) {
         view.selectedDate = today
     }
 }
+
 @BindingAdapter("app:overScrollOrientation")
 fun setUpOverScroll(recyclerView: RecyclerView, orientation: Int) {
     OverScrollDecoratorHelper.setUpOverScroll(recyclerView, orientation)
 }
+
 @BindingAdapter("statusTextColor")
 fun setStatusTextColor(textView: TextView, status: String?) {
     when (status) {
         "To Do" -> textView.setTextColor(textView.context.getColor(R.color.teal_700))
         "In Progress" -> textView.setTextColor(textView.context.getColor(R.color.lightItemColor))
         "Complete" -> textView.setTextColor(textView.context.getColor(R.color.red))
+        "المهام" -> textView.setTextColor(textView.context.getColor(R.color.teal_700))
+        "قيد التنفيذ" -> textView.setTextColor(textView.context.getColor(R.color.lightItemColor))
+        "اكتملت" -> textView.setTextColor(textView.context.getColor(R.color.red))
     }
 }
+
 @BindingAdapter("selectedItemPosition", "onItemSelected", requireAll = false)
 fun setSpinnerListeners(
     spinner: Spinner,
     selectedPosition: Int?,
-    onItemSelected: AdapterView.OnItemSelectedListener?
+    onItemSelected: AdapterView.OnItemSelectedListener?,
 ) {
     spinner.setSelection(selectedPosition ?: 0)
     spinner.onItemSelectedListener = onItemSelected
 }
+
 @BindingAdapter("selectedItemPosition")
 fun Spinner.setSelectedItemPosition(position: Int) {
     if (this.selectedItemPosition != position) {
         this.setSelection(position, false)
     }
 }
+

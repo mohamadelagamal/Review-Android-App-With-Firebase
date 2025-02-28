@@ -27,7 +27,7 @@
             android:id="@+id/navigationHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bottom_nav_background"
+            android:background="@color/colorAccent"
             app:elevation="0dp"
             android:paddingVertical="20dp"
             app:itemBackground="@drawable/nav_item_background"

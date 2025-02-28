@@ -10,13 +10,13 @@ pipeline {
 
         stage('Setup Fastlane') {
             steps {
-                sh 'bundle install'  // يثبت جميع الحزم المطلوبة لـ Fastlane
+                sh 'bundle install'
             }
         }
 
         stage('Build and Deploy') {
             steps {
-                sh 'fastlane android beta_prod'  // يشغل Fastlane لنشر التطبيق
+                sh 'fastlane android beta_prod'
             }
         }
     }

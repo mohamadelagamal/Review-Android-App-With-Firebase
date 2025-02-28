@@ -37,9 +37,10 @@ object AppModule {
     fun provideLoginRepository(
         firebaseAuth: FirebaseAuth,
         firebaseFireStore: FirebaseFirestore,
+        application: Application
     ): LoginRepository {
         return LoginRepository(
-            firebaseAuth, firebaseFireStore
+            firebaseAuth, firebaseFireStore,application
         )
     }
 

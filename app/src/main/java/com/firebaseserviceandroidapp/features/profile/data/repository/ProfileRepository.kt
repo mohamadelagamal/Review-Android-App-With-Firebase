@@ -11,6 +11,8 @@ import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
 import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(
@@ -18,106 +20,80 @@ class ProfileRepository @Inject constructor(
     private val firebaseFireStore: FirebaseFirestore,
     private val context: Context, // Inject Context for SharedPreferences
 ) {
-    // In-memory cache
-    private val profileCache = mutableMapOf<String, Map<String, Any>>()
-
-    // SharedPreferences for disk caching
-    private val sharedPreferences =
-        context.getSharedPreferences("ProfileCache", Context.MODE_PRIVATE)
+    private val cache = mutableMapOf<String, Map<String, Any>>()
+    private val prefs = context.getSharedPreferences("ProfileCache", Context.MODE_PRIVATE)
     private val gson = Gson()
 
     suspend fun updateProfile(
         name: String,
         title: String,
-        description: String,
+        desc: String,
         imageUri: Uri?,
     ): ProfileResult {
-        logD("ProfileFragment", "updateProfile$imageUri")
-        val userId = getUserId() ?: return ProfileResult.Error("User not logged in")
-        val user = createUserMap(name, title, description, imageUri)
-        return try {
-            updateUserInFirestore(userId, user)
-            updateCaches(userId, user)
-            ProfileResult.Success(user)
-        } catch (e: Exception) {
-            logD("ProfileRepository", "Error updating profile: ${e.message}")
-            ProfileResult.Error(e.message ?: "Error updating profile")
-        }
-    }
-
-    suspend fun getUserProfile(): ProfileResult {
-        val userId = getUserId() ?: return ProfileResult.Error("User not logged in")
-        return getCachedProfile(userId) ?: fetchProfileFromFirestore(userId)
-    }
-
-    private fun getUserId(): String? {
-        return firebaseAuth.currentUser?.uid
-    }
-
-    private fun createUserMap(
-        name: String,
-        title: String,
-        description: String,
-        imageUri: Uri?,
-    ): MutableMap<String, String> {
-        return mutableMapOf(
+        logD("ProfileRepo", "Updating profile: $imageUri")
+        val userId =
+            firebaseAuth.currentUser?.uid ?: return ProfileResult.Error("User not logged in")
+        val user = mapOf(
             "name" to name,
             "title" to title,
-            "description" to description
-        ).apply {
-            imageUri?.let { this["imageUri"] = it.toString() }
+            "description" to desc,
+            "imageUri" to saveImage(imageUri)?.toString()
+        )
+        return runCatching { // run catch block to handle exceptions if any occurs during the execution of the code inside the block
+            firebaseFireStore.collection(Constants.COLLECTION_USERS).document(userId).update(user)
+                .await()
+            cache[userId] = user as Map<String, Any>
+            saveToPrefs(userId, user)
+            ProfileResult.Success(user)
+        }.getOrElse { ProfileResult.Error(it.message ?: "Error updating profile") }
+    }
+
+    suspend fun getProfile(): ProfileResult {
+        val userId =
+            firebaseAuth.currentUser?.uid ?: return ProfileResult.Error("User not logged in")
+        cache[userId]?.let { return ProfileResult.Success(it) }
+        getFromPrefs(userId)?.let {
+            cache[userId] = it
+            return ProfileResult.Success(it)
         }
+        return fetchProfile(userId)
     }
 
-    private suspend fun updateUserInFirestore(userId: String, user: Map<String, Any>) {
-        firebaseFireStore.collection(Constants.COLLECTION_USERS)
-            .document(userId)
-            .update(user)
-            .await()
-    }
-
-    private fun updateCaches(userId: String, user: Map<String, Any>) {
-        profileCache[userId] = user
-        saveProfileToCache(userId, user)
-    }
-
-    private suspend fun getCachedProfile(userId: String): ProfileResult? {
-        profileCache[userId]?.let { return ProfileResult.Success(it) }
-        val diskCachedProfile = withContext(Dispatchers.IO) { getProfileFromCache(userId) }
-        return diskCachedProfile?.let {
-            profileCache[userId] = it
-            ProfileResult.Success(it)
-        }
-    }
-
-    private suspend fun fetchProfileFromFirestore(userId: String): ProfileResult {
-        return try {
-            val profileData = withContext(Dispatchers.IO) {
-                firebaseFireStore.collection(Constants.COLLECTION_USERS)
-                    .document(userId)
-                    .get()
-                    .await()
-                    .data ?: emptyMap()
+    private suspend fun fetchProfile(userId: String): ProfileResult {
+        return runCatching {
+            val data = withContext(Dispatchers.IO) {
+                firebaseFireStore.collection(Constants.COLLECTION_USERS).document(userId).get()
+                    .await().data
+                    ?: emptyMap()
             }
-            updateCaches(userId, profileData)
-            ProfileResult.Success(profileData)
-        } catch (e: Exception) {
-            logD("ProfileRepository", "Error fetching profile: ${e.message}")
-            ProfileResult.Error(e.message ?: "Error fetching profile")
-        }
+            cache[userId] = data
+            saveToPrefs(userId, data)
+            ProfileResult.Success(data)
+        }.getOrElse { ProfileResult.Error(it.message ?: "Error fetching profile") }
     }
 
-    private fun saveProfileToCache(userId: String, profile: Map<String, Any>) {
-        val json = gson.toJson(profile)
-        sharedPreferences.edit().putString("profile_$userId", json).apply()
+    private fun saveToPrefs(userId: String, data: Map<String, Any>) {
+        prefs.edit().putString("profile_$userId", gson.toJson(data)).apply()
     }
 
-    private fun getProfileFromCache(userId: String): Map<String, Any>? {
-        val json = sharedPreferences.getString("profile_$userId", null)
-        return json?.let { gson.fromJson(it, Map::class.java) as Map<String, Any> }
+    private fun getFromPrefs(userId: String): Map<String, Any>? {
+        return prefs.getString("profile_$userId", null)
+            ?.let { gson.fromJson(it, Map::class.java) as Map<String, Any> }
     }
+
     fun clearCache() {
-        profileCache.clear()
-        sharedPreferences.edit().clear().apply()
+        cache.clear()
+        prefs.edit().clear().apply()
+    }
+
+    private fun saveImage(uri: Uri?): Uri? {
+        if (uri == null) return null
+        return runCatching {
+            val inputStream = context.contentResolver.openInputStream(uri)
+            val file = File(context.filesDir, "profile.jpg")
+            FileOutputStream(file).use { outputStream -> inputStream?.copyTo(outputStream) }
+            inputStream?.close()
+            Uri.fromFile(file)
+        }.getOrNull()
     }
 }

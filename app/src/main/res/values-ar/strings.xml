@@ -66,7 +66,19 @@
     <string name="logout_confirmation">هل أنت متأكد من تسجيل الخروج؟</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
-
-
+    <string name="note_deleted_successfully">تم حذف الملاحظة بنجاح</string>
+    <string name="failed_to_delete_note">فشل في حذف الملاحظة</string>
+    <string name="note_updated_successfully">تم تحديث الملاحظة بنجاح</string>
+    <string name="failed_to_update_note">فشل في تحديث الملاحظة</string>
+    <string name="note_added_successfully">تمت إضافة الملاحظة بنجاح</string>
+    <string name="failed_to_add_note">فشل في إضافة الملاحظة</string>
+    <string name="loading">جار التحميل</string>
+    <string name="validationEmailAndPassword">البريد الإلكتروني أو كلمة المرور غير صالحة</string>
+    <string name="enter_email">أدخل البريد الإلكتروني</string>
+    <string name="enter_password">أدخل كلمة المرور</string>
+    <string name="enter_password_length">يجب أن تكون كلمة المرور على الأقل 8 أحرف</string>
+    <string name="email_validation">البريد الإلكتروني غير صالح</string>
+    <string name="enter_name">أدخل الاسم</string>
+    <string name="enter_title">أدخل العنوان</string>
 
 </resources>

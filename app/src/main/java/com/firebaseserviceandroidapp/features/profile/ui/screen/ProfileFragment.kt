@@ -1,14 +1,13 @@
 package com.firebaseserviceandroidapp.features.profile.ui.screen
 
 import android.Manifest
-import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
+import android.util.Log
 import android.view.View
-import androidx.core.app.ActivityCompat
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -35,7 +34,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
         setupClickListeners()
         observeProfileState()
-        observeImageUri()
     }
 
     private fun setupClickListeners() {
@@ -66,19 +64,30 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     }
 
     private fun isReadExternalStoragePermissionGranted(): Boolean {
-        return ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        }
     }
 
+
     private fun requestReadExternalStoragePermission() {
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-            REQUEST_READ_EXTERNAL_STORAGE
-        )
+        val permission =
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                Manifest.permission.READ_MEDIA_IMAGES
+            } else {
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            }
+        permissionLauncher.launch(permission)
     }
+
 
     private fun observeProfileState() {
         lifecycleScope.launchWhenStarted {
@@ -92,15 +101,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }
     }
 
-    private fun observeImageUri() {
-        profileViewModel.imageUri.observe(viewLifecycleOwner) { uri ->
-            if (isReadExternalStoragePermissionGranted()) {
-                viewDataBinding.profileImage.setImageURI(uri)
-            } else {
-                requestReadExternalStoragePermission()
-            }
-        }
-    }
+
 
     private fun showLoadingIndicator() {
         // Show loading indicator
@@ -112,7 +113,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         viewDataBinding.profileBio.setText(state.description)
         state.imageUri?.let {
             if (isReadExternalStoragePermissionGranted()) {
-                viewDataBinding.profileImage.setImageURI(it)
+                Log.e(
+                    "ProfileFragment",
+                    "updateUI: ${state.imageUri} ${state.imageUri.toString()}"
+                )
+                viewDataBinding.profileImage.setImageURI(
+                    Uri.parse(state.imageUri.toString())
+                )
             } else {
                 requestReadExternalStoragePermission()
             }
@@ -123,18 +130,32 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         viewModel.showMessage(message)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-            imageUri = data?.data
-            viewDataBinding.profileImage.setImageURI(imageUri)
-            profileViewModel.setImageUri(imageUri)
+    private val imagePickerLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                imageUri = it
+                viewDataBinding.profileImage.setImageURI(it)
+                profileViewModel.setImageUri(it)
+            }
         }
-    }
+
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                loadImage()
+            } else {
+                Log.e("Permission", "User denied the permission.")
+                Toast.makeText(
+                    requireContext(),
+                    "Permission denied! Cannot access gallery.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
 
     private fun loadImage() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        imagePickerLauncher.launch("image/*")
     }
 
     override fun onRequestPermissionsResult(

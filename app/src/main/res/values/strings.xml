@@ -67,5 +67,18 @@
     <string name="logout_confirmation">Are you sure you want to logout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-
+    <string name="note_deleted_successfully">Note deleted successfully</string>
+    <string name="failed_to_delete_note">Failed to delete note</string>
+    <string name="note_updated_successfully">Note updated successfully</string>
+    <string name="failed_to_update_note">Failed to update note</string>
+    <string name="note_added_successfully">Note added successfully</string>
+    <string name="failed_to_add_note">Failed to add note</string>
+    <string name="loading">Loading</string>
+    <string name="validationEmailAndPassword">email or password is invalid</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_password_length">Password must be at least 8 characters</string>
+    <string name="email_validation">please enter a valid email</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_title">Enter Title</string>
 </resources>

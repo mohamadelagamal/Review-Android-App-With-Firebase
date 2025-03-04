@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val profileRepository: ProfileRepository,
-) : BaseFragmentViewModel<ProfileViewState>() {
+) : BaseFragmentViewModel<ProfileNavigator>() {
 
     private val _profileState = MutableStateFlow<ProfileUIState>(ProfileUIState.Loading)
     val profileState = _profileState.asStateFlow()
@@ -76,19 +76,17 @@ class ProfileViewModel @Inject constructor(
         newImageUri: Uri?,
     ) {
         setLoadingDialog(true)
-        // check if newImage is null or not
-        var newImageUri: Uri? = newImageUri
-        if (newImageUri == null) {
-            newImageUri = _imageUri.value
-        }
         viewModelScope.launch {
             _profileState.value = ProfileUIState.Loading
-            handleProfileResult(profileRepository.updateProfile(newName, newTitle, newDescription, newImageUri))
+            val currentImageUri = _imageUri.value
+            profileRepository.updateProfile(
+                newName,
+                newTitle,
+                newDescription,
+                newImageUri ?: currentImageUri
+            )
             setLoadingDialog(false)
         }
     }
 
-    fun setImageUri(uri: Uri?) {
-        _imageUri.value = uri
-    }
 }

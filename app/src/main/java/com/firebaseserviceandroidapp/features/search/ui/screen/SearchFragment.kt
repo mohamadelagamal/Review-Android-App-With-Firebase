@@ -8,11 +8,11 @@ import com.firebaseserviceandroidapp.R
 import com.firebaseserviceandroidapp.core.base.fragment.BaseFragment
 import com.firebaseserviceandroidapp.databinding.FragmentSearchBinding
 import com.firebaseserviceandroidapp.features.search.logic.SearchViewModel
-import com.firebaseserviceandroidapp.features.search.logic.SearchViewState
+import com.firebaseserviceandroidapp.features.search.logic.SearchNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchViewState {
+class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchNavigator {
 
     private val searchViewModel: SearchViewModel by viewModels()
 

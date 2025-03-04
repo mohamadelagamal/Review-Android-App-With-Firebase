@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import com.firebaseserviceandroidapp.core.base.activity.BaseViewModel
-import com.firebaseserviceandroidapp.core.constants.Constants
 import com.firebaseserviceandroidapp.core.utils.NetworkUtil.createPropertyChangedCallback
 import com.firebaseserviceandroidapp.features.login.data.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +14,7 @@ import com.firebaseserviceandroidapp.R
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
     val application: Application
-) : BaseViewModel<LoginViewState>() {
+) : BaseViewModel<LoginNavigator>() {
 
     var email = ObservableField<String>()
     var password = ObservableField<String>()

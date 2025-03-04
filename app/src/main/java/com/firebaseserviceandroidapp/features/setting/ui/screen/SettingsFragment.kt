@@ -12,12 +12,12 @@ import com.firebaseserviceandroidapp.core.base.fragment.BaseFragment
 import com.firebaseserviceandroidapp.databinding.FragmentSettingsBinding
 import com.firebaseserviceandroidapp.features.login.ui.screen.LoginActivity
 import com.firebaseserviceandroidapp.features.setting.logic.SettingsViewModel
-import com.firebaseserviceandroidapp.features.setting.logic.SettingsViewState
+import com.firebaseserviceandroidapp.features.setting.logic.SettingsNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>(),
-    SettingsViewState {
+    SettingsNavigator {
 
     private val settingsViewModel: SettingsViewModel by viewModels()
     private var isFirstSelection = true // لمنع الـ Loop عند التهيئة

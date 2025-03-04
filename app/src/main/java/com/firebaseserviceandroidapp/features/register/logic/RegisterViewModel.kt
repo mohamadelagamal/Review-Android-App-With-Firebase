@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.viewModelScope
 import com.firebaseserviceandroidapp.core.base.activity.BaseViewModel
-import com.firebaseserviceandroidapp.core.constants.Constants
 import com.firebaseserviceandroidapp.core.utils.NetworkUtil.createPropertyChangedCallback
 import com.firebaseserviceandroidapp.features.register.data.models.RegisterResponse
 import com.firebaseserviceandroidapp.features.register.data.repository.RegisterRepository
@@ -17,7 +16,7 @@ import com.firebaseserviceandroidapp.R
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val registerRepository: RegisterRepository,
    val  application: Application) :
-    BaseViewModel<RegisterViewState>() {
+    BaseViewModel<RegisterNavigator>() {
 
     var name = ObservableField<String>()
     var title = ObservableField<String>()

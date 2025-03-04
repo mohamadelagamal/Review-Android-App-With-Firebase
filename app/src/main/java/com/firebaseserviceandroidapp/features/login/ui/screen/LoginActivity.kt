@@ -9,12 +9,12 @@ import com.firebaseserviceandroidapp.core.base.activity.BaseActivity
 import com.firebaseserviceandroidapp.core.layout.ui.screen.MainLayoutActivity
 import com.firebaseserviceandroidapp.databinding.ActivityLoginBinding
 import com.firebaseserviceandroidapp.features.login.logic.LoginViewModel
-import com.firebaseserviceandroidapp.features.login.logic.LoginViewState
+import com.firebaseserviceandroidapp.features.login.logic.LoginNavigator
 import com.firebaseserviceandroidapp.features.register.ui.screen.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), LoginViewState {
+class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), LoginNavigator {
 
     private val loginViewModel: LoginViewModel by viewModels()
 

@@ -16,11 +16,11 @@ import com.firebaseserviceandroidapp.core.base.fragment.BaseFragment
 import com.firebaseserviceandroidapp.databinding.FragmentProfileBinding
 import com.firebaseserviceandroidapp.features.profile.data.models.ProfileUIState
 import com.firebaseserviceandroidapp.features.profile.logic.ProfileViewModel
-import com.firebaseserviceandroidapp.features.profile.logic.ProfileViewState
+import com.firebaseserviceandroidapp.features.profile.logic.ProfileNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(), ProfileViewState {
+class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(), ProfileNavigator {
 
     private val profileViewModel: ProfileViewModel by viewModels()
     private val PICK_IMAGE_REQUEST = 1
@@ -135,7 +135,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             uri?.let {
                 imageUri = it
                 viewDataBinding.profileImage.setImageURI(it)
-                profileViewModel.setImageUri(it)
             }
         }
 

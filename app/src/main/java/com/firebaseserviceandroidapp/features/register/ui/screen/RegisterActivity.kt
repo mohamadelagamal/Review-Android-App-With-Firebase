@@ -10,12 +10,12 @@ import com.firebaseserviceandroidapp.core.layout.ui.screen.MainLayoutActivity
 import com.firebaseserviceandroidapp.databinding.ActivityRegisterBinding
 import com.firebaseserviceandroidapp.features.login.ui.screen.LoginActivity
 import com.firebaseserviceandroidapp.features.register.logic.RegisterViewModel
-import com.firebaseserviceandroidapp.features.register.logic.RegisterViewState
+import com.firebaseserviceandroidapp.features.register.logic.RegisterNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>(),
-    RegisterViewState {
+    RegisterNavigator {
 
     private lateinit var binding: ActivityRegisterBinding
     private val registerViewModel: RegisterViewModel by viewModels()

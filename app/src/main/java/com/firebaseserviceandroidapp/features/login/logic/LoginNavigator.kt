@@ -1,6 +1,6 @@
 package com.firebaseserviceandroidapp.features.login.logic
 
-interface LoginViewState {
+interface LoginNavigator {
     fun openRegister()
     fun openHome()
 }

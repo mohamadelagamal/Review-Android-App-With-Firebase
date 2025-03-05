@@ -2,6 +2,6 @@ package com.firebaseserviceandroidapp.features.search.logic
 
 import android.widget.SearchView
 
-interface SearchNavigator {
+interface SearchViewState {
     fun getSearchView(): SearchView
 }

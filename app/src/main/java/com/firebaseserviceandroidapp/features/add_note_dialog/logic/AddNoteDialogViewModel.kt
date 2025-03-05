@@ -19,7 +19,7 @@ class AddNoteDialogViewModel @Inject constructor(
     private val application: Application,
     private val addNoteDialogRepository: AddNoteDialogRepository,
 ) :
-    ViewModel(), AddNoteDialogNavigator {
+    ViewModel(), AddNoteDialogViewState {
 
     var title = ObservableField<String>()
     var details = ObservableField<String>()

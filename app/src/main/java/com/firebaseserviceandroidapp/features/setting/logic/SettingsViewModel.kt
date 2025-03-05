@@ -20,7 +20,7 @@ class SettingsViewModel @Inject constructor(
     private val application: Application,
     private val settingRepository: SettingRepository,
     private val firebaseAuth: FirebaseAuth,
-) : BaseFragmentViewModel<SettingsNavigator>() {
+) : BaseFragmentViewModel<SettingsViewState>() {
 
     var isDarkModeEnabled = ObservableField<Boolean>(settingRepository.isDarkModeEnabled())
     var selectedLanguagePosition = ObservableInt(settingRepository.getSelectedLanguage().let {

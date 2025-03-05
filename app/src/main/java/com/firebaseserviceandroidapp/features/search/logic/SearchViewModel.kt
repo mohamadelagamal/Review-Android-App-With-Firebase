@@ -8,9 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.firebaseserviceandroidapp.core.base.fragment.BaseFragmentViewModel
 import com.firebaseserviceandroidapp.features.add_note_dialog.data.model.NoteItem
+import com.firebaseserviceandroidapp.features.home.ui.adapter.NoteAdapter
 import com.firebaseserviceandroidapp.features.search.data.repository.SearchRepository
 import com.firebaseserviceandroidapp.features.search.ui.adapter.SearchAdapter
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,7 +20,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private var searchRepository: SearchRepository,
     private var application: Application
-) : BaseFragmentViewModel<SearchNavigator>() {
+) : BaseFragmentViewModel<SearchViewState>() {
 
     private val _searchResults = MutableLiveData<List<NoteItem>>()
     val searchResults: LiveData<List<NoteItem>> = _searchResults

@@ -12,6 +12,7 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
+
         val preferenceHelper = PreferenceHelper(this)
         if (preferenceHelper.isDarkModeEnabled()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

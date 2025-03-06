@@ -30,7 +30,7 @@ platform :android do
       app: "1:607723432297:android:e32f6b219de11e44a5b5f8", # Development App ID
       release_notes: "New Development build 🚀",
       testers: "mohamadelgamal2002.9.1@gmail.com",
-      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/serviceAccount.json",
+      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/service_account.json",
       firebase_cli_token: "1//09oe8r5LSNWwfCgYIARAAGAkSNwF-L9IrZklGZrEFuN4_s8W83Y19Q7dHI5fPPqtT5lzsTDM7o7JbAOb8sQqUCki-NNRcuxAv6ys",
       apk_path: apk_path
     )
@@ -63,7 +63,7 @@ platform :android do
       app: "1:607723432297:android:237ca2b672593c9ca5b5f8", # Production App ID
       release_notes: "New Production build 🚀",
       testers: "mohamadelgamal2002.9.1@gmail.com",
-      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/serviceAccount.json",
+      service_credentials_file: "C:/Users/moham/StudioProjects/FirebaseServiceAndroidApp/app/service_account.json",
       firebase_cli_token: "1//09oe8r5LSNWwfCgYIARAAGAkSNwF-L9IrZklGZrEFuN4_s8W83Y19Q7dHI5fPPqtT5lzsTDM7o7JbAOb8sQqUCki-NNRcuxAv6ys",
       apk_path: apk_path
     )

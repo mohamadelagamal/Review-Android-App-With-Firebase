@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="me.everything.android.ui.overscroll.OverScrollDecoratorHelper" />
+        <variable name="searchViewModel"
+            type="com.firebaseserviceandroidapp.features.search.logic.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.search.ui.SearchFragment">
+
+        <SearchView
+            android:id="@+id/searchView"
+            style="@style/Widget.Material3.SearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="@string/enter_some_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            app:adapter="@{searchViewModel.notesAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:overScrollOrientation="@{OverScrollDecoratorHelper.ORIENTATION_VERTICAL}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchView"
+            tools:listitem="@layout/item_search_result" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

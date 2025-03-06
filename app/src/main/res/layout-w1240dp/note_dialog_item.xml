@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vmAddNoteDialog"
+            type="com.firebaseserviceandroidapp.features.add_note_dialog.logic.AddNoteDialogViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="35dp">
+
+        <TextView
+            android:id="@+id/add_new_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="@string/add_new_note"
+            android:textColor="@color/lightItemColor"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transParent"
+            android:paddingVertical="10dp"
+            app:boxBackgroundColor="@color/white"
+            app:errorEnabled="true"
+            app:helperText="@{vmAddNoteDialog.titleError}"
+            app:helperTextTextColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_new_todo">
+
+            <EditText
+                android:id="@+id/EditText_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transParent"
+                android:hint="@string/Title"
+                android:maxLines="2"
+                android:text="@={vmAddNoteDialog.title}"
+                android:textStyle="italic" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/details_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:paddingVertical="10dp"
+            app:errorEnabled="true"
+            app:helperText="@{vmAddNoteDialog.detailsError}"
+            app:helperTextTextColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_layout">
+
+            <EditText
+                android:id="@+id/EditText_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:background="@color/transParent"
+                android:hint="@string/details"
+                android:maxLines="5"
+                android:text="@={vmAddNoteDialog.details}"
+                android:textStyle="italic" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/status_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingVertical="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_layout" />
+
+        <TextView
+            android:id="@+id/Chose_Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@{vmAddNoteDialog.chooseDate}"
+            android:textColor="@color/lightItemColor"
+            android:textSize="29sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_spinner"
+            tools:text="7/7/2021" />
+
+        <Button
+            android:id="@+id/AddBottom_todo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="@{()->vmAddNoteDialog.addNote()}"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@id/Chose_Date" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="11dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Chose_Date" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

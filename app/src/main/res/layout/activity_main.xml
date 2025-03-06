@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vmMainLayout"
+            type="com.example.reviewapisandroid.features.home.logic.MainLayoutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.MainActivity"
+        android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
+        >
+
+        <FrameLayout
+            android:id="@+id/frameLayoutHome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/navigationHome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            app:elevation="0dp"
+            app:itemBackground="@drawable/nav_item_background"
+            app:itemIconTint="@color/nav_item_text_color"
+            app:itemTextColor="@color/nav_item_text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@color/black"
+            android:contentDescription="@string/todo"
+            android:onClick="@{()->vmMainLayout.onFabClick()}"
+            android:src="@drawable/baseline_add_24"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

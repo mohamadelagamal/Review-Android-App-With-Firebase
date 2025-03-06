@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profileViewModel"
+            type="com.firebaseserviceandroidapp.features.profile.logic.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.profile.ui.screen.ProfileFragment">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/todo"
+            android:elevation="4dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+        <EditText
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transParent"
+            android:fontFamily="casual"
+            android:padding="10dp"
+            android:text="@={profileViewModel.name}"
+            android:textColor="@color/lightItemColor"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/profile_bio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Mohamad Elgamal" />
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transParent"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@={profileViewModel.title}"
+            android:textColor="@color/lightItemColor"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/profile_name"
+            tools:text="Software Engineer" />
+
+        <EditText
+            android:id="@+id/profile_bio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/transParent"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@={profileViewModel.description}"
+            android:textColor="@color/lightItemColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="I'm a software engineer, I love coding and I'm passionate about learning new technologies." />
+
+        <LinearLayout
+            android:id="@+id/profile_buttons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_bio"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="casual"
+                android:text="@string/update"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

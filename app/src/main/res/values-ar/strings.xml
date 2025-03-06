@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">الإعدادات</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="light_mode">الوضع الفاتح</string>
+    <string name="language">اللغة</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">العربية</string>
+    <string-array name="language_options">
+        <item>الإنجليزية</item>
+        <item>العربية</item>
+    </string-array>
+
+    <string name="app_name">الجمل</string>
+    <string name="todo">قائمة المهام</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">الرسائل</string>
+    <string name="sync_header">المزامنة</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">توقيعك</string>
+    <string name="reply_title">إجراء الرد الافتراضي</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">مزامنة البريد الإلكتروني بشكل دوري</string>
+    <string name="attachment_title">تنزيل المرفقات الواردة</string>
+    <string name="attachment_summary_on">تنزيل المرفقات تلقائيًا للبريد الإلكتروني الوارد</string>
+    <string name="attachment_summary_off">تنزيل المرفقات فقط عند الطلب يدويًا</string>
+    <string name="title_activity_login">نشاط تسجيل الدخول</string>
+    <string name="prompt_email">البريد الإلكتروني</string>
+    <string name="prompt_password">كلمة المرور</string>
+    <string name="action_sign_in">تسجيل الدخول أو التسجيل</string>
+    <string name="action_sign_in_short">تسجيل الدخول</string>
+    <string name="welcome">"مرحبًا!"</string>
+    <string name="invalid_username">اسم مستخدم غير صالح</string>
+    <string name="invalid_password">يجب أن تكون كلمة المرور أكثر من 5 أحرف</string>
+    <string name="login_failed">"فشل تسجيل الدخول"</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="username">الاسم</string>
+    <string name="register">تسجيل</string>
+    <string name="Register">تسجيل</string>
+    <string name="title_activity_register">نشاط التسجيل</string>
+    <string name="name">الاسم</string>
+    <string name="title">العنوان</string>
+    <string name="Title">العنوان</string>
+    <string name="Name">الاسم</string>
+    <string name="add_new_note">إضافة ملاحظة جديدة</string>
+    <string name="details">التفاصيل</string>
+    <string name="ok">موافق</string>
+    <string name="choose_date">اختر التاريخ</string>
+    <string name="priority">الأولوية:</string>
+    <string name="home">الرئيسية</string>
+    <string name="search">البحث</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="todo_title_error">الرجاء إدخال عنوان المهمة</string>
+    <string name="todo_details_error">الرجاء إدخال تفاصيل المهمة</string>
+    <string name="todo_date_error">الرجاء إدخال تاريخ المهمة</string>
+    // To Do ,Complete,In Progress
+    <string name="toDo">المهام</string>
+    <string name="complete">اكتملت</string>
+    <string name="in_progress">قيد التنفيذ</string>
+    <string name="update">تحديث</string>
+    <string name="enter_some_text">الرجاء إدخال نص....</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="logout_confirmation">هل أنت متأكد من تسجيل الخروج؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="note_deleted_successfully">تم حذف الملاحظة بنجاح</string>
+    <string name="failed_to_delete_note">فشل في حذف الملاحظة</string>
+    <string name="note_updated_successfully">تم تحديث الملاحظة بنجاح</string>
+    <string name="failed_to_update_note">فشل في تحديث الملاحظة</string>
+    <string name="note_added_successfully">تمت إضافة الملاحظة بنجاح</string>
+    <string name="failed_to_add_note">فشل في إضافة الملاحظة</string>
+    <string name="loading">جار التحميل</string>
+    <string name="validationEmailAndPassword">البريد الإلكتروني أو كلمة المرور غير صالحة</string>
+    <string name="enter_email">أدخل البريد الإلكتروني</string>
+    <string name="enter_password">أدخل كلمة المرور</string>
+    <string name="enter_password_length">يجب أن تكون كلمة المرور على الأقل 8 أحرف</string>
+    <string name="email_validation">البريد الإلكتروني غير صالح</string>
+    <string name="enter_name">أدخل الاسم</string>
+    <string name="enter_title">أدخل العنوان</string>
+
+</resources>

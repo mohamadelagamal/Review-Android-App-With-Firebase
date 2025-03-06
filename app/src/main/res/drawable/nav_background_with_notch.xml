@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!-- res/drawable/nav_background_with_notch.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorAccent" /> <!-- Match your bottom nav color -->
+        </shape>
+    </item>
+    <!-- Transparent notch/carve area (adjust "radius" for curve size) -->
+    <item
+        android:bottom="-60dp"
+        android:left="100dp"
+        android:right="100dp"
+        android:top="-60dp">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -52,11 +52,11 @@ Experience the app through these visuals:
   <tr>
      <td align="center">
       <b>Login Screen</b><br>
-      <img src="![Screenshot_٢٠٢٥٠٣٠٦-٠٣٤٦٢٣](https://github.com/user-attachments/assets/37c32436-4656-40b7-8275-ba31638eea9e)" alt="Login Screen" width="200"/>
+      <img src="https://github.com/user-attachments/assets/37c32436-4656-40b7-8275-ba31638eea9e" alt="Login Screen" width="200"/>
     </td>
      <td align="center">
       <b>Register Screen</b><br>
-      <img src="![Screenshot_٢٠٢٥٠٣٠٦-٠٣٤٦٢٩](https://github.com/user-attachments/assets/503e9d94-e44a-4af3-8ba3-687efdbd9b54)" alt="Register Screen" width="200"/>
+      <img src="https://github.com/user-attachments/assets/503e9d94-e44a-4af3-8ba3-687efdbd9b54" alt="Register Screen" width="200"/>
     </td>
     <td align="center">
       <b>Home Screen</b><br>

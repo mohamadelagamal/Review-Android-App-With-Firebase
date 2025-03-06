@@ -48,17 +48,16 @@ A robust Android application that enables users to post and read reviews in real
 - **Modern UI/UX:** Intuitive and visually appealing design for an enhanced user experience.
 
 ---
-![Screenshot_٢٠٢٥٠٣٠٦-٠٣١٠١٥](https://github.com/user-attachments/assets/9fa77938-dc92-418a-bc1e-887b975444c2)
 
 ## 🎨 Screenshots & Demo
 
 Experience the app through these visuals:
 
 - **Home Screen:**  
-  ![Home Screen](![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٧٣٧](https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd5))
+  ![Home Screen] ![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٧٣٧](https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd50)
 
 - **Search Detail:**  
-  ![Search Detail](![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٨٤١](https://github.com/user-attachments/assets/4d98f51c-4652-489e-bd17-3cfa62978a8c))
+  ![Search Detail] ![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٨٤١](https://github.com/user-attachments/assets/4d98f51c-4652-489e-bd17-3cfa62978a8c)
 
 - **User Profile:**  
   ![User Profile](![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٩٣٦](https://github.com/user-attachments/assets/db493e10-9894-48aa-820e-6a8be09fdbe8))

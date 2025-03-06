@@ -48,6 +48,7 @@ A robust Android application that enables users to post and read reviews in real
 - **Modern UI/UX:** Intuitive and visually appealing design for an enhanced user experience.
 
 ---
+![Screenshot_٢٠٢٥٠٣٠٦-٠٣١٠١٥](https://github.com/user-attachments/assets/9fa77938-dc92-418a-bc1e-887b975444c2)
 
 ## 🎨 Screenshots & Demo
 

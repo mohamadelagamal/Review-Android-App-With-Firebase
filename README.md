@@ -4,9 +4,9 @@
 # Review Android App with Firebase
 
 [![Build Status](https://codefresh.io/wp-content/uploads/2023/07/Build_Success_2.jpg)
-[![License: MIT](https://thumbs.dreamstime.com/b/license-icon-vector-thin-line-outline-illustration-symbol-use-web-mobile-apps-logo-print-media-141551385.jpg)](LICENSE)
-[![Fastlane](https://miro.medium.com/v2/resize:fit:871/1*YPgMj2zxMl5DM-U1gudc_g@2x.jpeg)](https://fastlane.tools)
-[![Jenkins](https://miro.medium.com/v2/resize:fit:860/0*ESu2BzFkp1UWaiyI.png)](https://www.jenkins.io/)
+[![License: MIT]()](LICENSE)
+[![Fastlane]()](https://fastlane.tools)
+[![Jenkins]()](https://www.jenkins.io/)
 
 ![App Logo](![ic_launcher_prod](https://github.com/user-attachments/assets/017cd5d5-64d3-488b-86c1-1789605521d4))
 

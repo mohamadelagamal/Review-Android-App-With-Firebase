@@ -53,16 +53,26 @@ A robust Android application that enables users to post and read reviews in real
 
 Experience the app through these visuals:
 
-- **Home Screen:**  
-  ![Home Screen] ![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٧٣٧](https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd50)
-
-- **Search Detail:**  
-  ![Search Detail] ![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٨٤١](https://github.com/user-attachments/assets/4d98f51c-4652-489e-bd17-3cfa62978a8c)
-
-- **User Profile:**  
-  ![User Profile](![Screenshot_٢٠٢٥٠٣٠٦-٠٣٠٩٣٦](https://github.com/user-attachments/assets/db493e10-9894-48aa-820e-6a8be09fdbe8))
-
-- **Settings (Shared Preferences):**  ![Settings](![Screenshot_٢٠٢٥٠٣٠٦-٠٣١٠١٥](https://github.com/user-attachments/assets/4afb2fba-9dd5-43c4-9019-eedbb8fa1572))
+<table>
+  <tr>
+    <td align="center">
+      <b>Home Screen</b><br>
+      <img src="https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd50" alt="Home Screen" width="200"/>
+    </td>
+    <td align="center">
+      <b>Search Detail</b><br>
+      <img src="https://github.com/user-attachments/assets/4d98f51c-4652-489e-bd17-3cfa62978a8c" alt="Search Detail" width="200"/>
+    </td>
+    <td align="center">
+      <b>User Profile</b><br>
+      <img src="https://github.com/user-attachments/assets/db493e10-9894-48aa-820e-6a8be09fdbe8" alt="User Profile" width="200"/>
+    </td>
+    <td align="center">
+      <b>Settings (Shared Preferences)</b><br>
+      <img src="https://github.com/user-attachments/assets/4afb2fba-9dd5-43c4-9019-eedbb8fa1572" alt="Settings" width="200"/>
+    </td>
+  </tr>
+</table>
 
 > **Demo Video:** [Watch the demo](https://www.youtube.com/) <!-- Replace with your demo video link -->
 

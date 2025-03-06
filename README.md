@@ -62,6 +62,10 @@ Experience the app through these visuals:
       <b>Home Screen</b><br>
       <img src="https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd50" alt="Home Screen" width="200"/>
     </td>
+     <td align="center">
+      <b>AddBottom Screen</b><br>
+      <img src="https://github.com/user-attachments/assets/d0e04b7c-6ef4-4b2b-87bf-625aea8b4024" alt="AddBottom Screen" width="200"/>
+    </td>
     <td align="center">
       <b>Search Detail</b><br>
       <img src="https://github.com/user-attachments/assets/4d98f51c-4652-489e-bd17-3cfa62978a8c" alt="Search Detail" width="200"/>

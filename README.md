@@ -55,20 +55,8 @@ Experience the app through these visuals:
 <table>
   <tr>
     <td align="center">
-      <b>Login Screen</b><br>
-      <img src="https://github.com/user-attachments/assets/37c32436-4656-40b7-8275-ba31638eea9e" alt="Login Screen" width="200"/>
-    </td>
-    <td align="center">
-      <b>Register Screen</b><br>
-      <img src="https://github.com/user-attachments/assets/503e9d94-e44a-4af3-8ba3-687efdbd9b54" alt="Register Screen" width="200"/>
-    </td>
-    <td align="center">
       <b>Home Screen</b><br>
       <img src="https://github.com/user-attachments/assets/912e332b-bd81-45ed-a1f8-eea574939bd50" alt="Home Screen" width="200"/>
-    </td>
-    <td align="center">
-      <b>AddBottom Screen</b><br>
-      <img src="https://github.com/user-attachments/assets/d0e04b7c-6ef4-4b2b-87bf-625aea8b4024" alt="AddBottom Screen" width="200"/>
     </td>
     <td align="center">
       <b>Search Detail</b><br>
@@ -84,6 +72,7 @@ Experience the app through these visuals:
     </td>
   </tr>
 </table>
+
 
 > **Demo Video:** [Watch the demo](https://youtube.com/shorts/IQPEizB84nA?si=KarG_n91O5EWv-Oc) <!-- Replace with your demo video link -->
 

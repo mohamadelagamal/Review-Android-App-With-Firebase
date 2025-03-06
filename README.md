@@ -4,11 +4,6 @@
 # Review Android App with Firebase
 
 [![Build Status](https://codefresh.io/wp-content/uploads/2023/07/Build_Success_2.jpg)
-[![License: MIT]()](LICENSE)
-[![Fastlane]()](https://fastlane.tools)
-[![Jenkins]()](https://www.jenkins.io/)
-
-![App Logo](![ic_launcher_prod](https://github.com/user-attachments/assets/017cd5d5-64d3-488b-86c1-1789605521d4))
 
 A robust Android application that enables users to post and read reviews in real-time, powered by Firebase services and enhanced by automated CI/CD pipelines using **Fastlane** and **Jenkins**. Enjoy a seamless experience with multiple build types, product flavors, and modern local storage via Shared Preferences.
 
@@ -74,7 +69,7 @@ Experience the app through these visuals:
   </tr>
 </table>
 
-> **Demo Video:** [Watch the demo](https://www.youtube.com/) <!-- Replace with your demo video link -->
+> **Demo Video:** [Watch the demo](https://youtube.com/shorts/IQPEizB84nA?si=KarG_n91O5EWv-Oc) <!-- Replace with your demo video link -->
 
 ---
 
